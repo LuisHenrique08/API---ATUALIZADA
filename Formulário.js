@@ -1,4 +1,4 @@
-const formCliente = document.getElementById("form-cadastro");
+const formCliente = document.getElementById("form-cliente");
 
 formCliente.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -6,7 +6,7 @@ formCliente.addEventListener("submit", async (event) => {
     const dados = pegarDadosCliente();
 
     try {
-        const reposta = await fetch("http://127.0.0.1:3000/cadastrar", {
+        const resposta = await fetch("http://127.0.0.1:3000/cadastrar", {
             method: "POST", 
             headers: {"Content-Type": "application/json"}, 
             body: JSON.stringify(dados)
@@ -33,7 +33,7 @@ function pegarDadosCliente(){
     cliente.telefone = document.getElementById("telefone").value
     cliente.cep = document.getElementById("cep").value
     cliente.rua = document.getElementById("rua").value
-    cliente.n_casa = document.getElementById("numero").value
+    cliente.n_casa = document.getElementById("n_casa").value
     cliente.bairro = document.getElementById("bairro").value
     cliente.cidade = document.getElementById("cidade").value
     cliente.uf = document.getElementById("uf").value
