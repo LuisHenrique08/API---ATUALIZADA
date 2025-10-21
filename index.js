@@ -42,7 +42,14 @@ app.post("/login", async (req,res)=>{
         const resultado = await db.pool.query(
             'SELECT*FROM cliente WHERE email = ?',
             [login.email])
-        console.log (resultado[0][0])
+        if(!resultado[0][0]){
+            return res.status(401).json({erro: "Email não cadastrado"})
+        }
+
+        if(resultado[0][0].senha!=login.senha){
+            return res.status(401).json({erro: "Senha invalida"})
+        }
+    
         
     }catch (erro) {
         res.status(500).json({erro: "Erro interno na API"})
